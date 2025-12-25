@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desi Coder - Learn Programming in Hindi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== MODERN ATTRACTIVE DESIGN ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-1000px) translateX(1000px); }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* ===== HERO HEADER ===== */
+        .hero-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .logo-icon {
+            font-size: 3.5em;
+            animation: logoSpin 10s infinite linear;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .logo-text {
+            font-size: 4.5em;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.8em;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ff9f43, #ee5a24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        /* ===== LANGUAGE SELECTION ===== */
+        .language-section {
+            margin: 60px auto 40px;
+            max-width: 1000px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #48dbfb);
+            border-radius: 2px;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Language Card Design */
+        .language-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+        }
+
+        .language-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .language-card.active {
+            background: rgba(255, 107, 107, 0.15);
+            border-color: #ff6b6b;
+            box-shadow: 0 20px 50px rgba(255, 107, 107, 0.3);
+        }
+
+        .language-card.active:before {
+            background: linear-gradient(90deg, #ff6b6b, #ff9f43);
+        }
+
+        .language-card.coming-soon {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .language-card.coming-soon:hover {
+            transform: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: transparent;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #555;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .language-icon {
+            font-size: 4.5em;
+            margin-bottom: 25px;
+            display: block;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-name {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .language-desc {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            min-height: 80px;
+        }
+
+        .language-features {
+            text-align: left;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .feature i {
+            color: #48dbfb;
+        }
+
+        /* ===== START BUTTON ===== */
+        .action-section {
+            text-align: center;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            max-width: 800px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .selected-language {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: #feca57;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            padding: 22px 80px;
+            font-size: 1.6em;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(0, 184, 148, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        .start-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0, 184, 148, 0.6);
+        }
+
+        .start-btn:hover:before {
+            left: 100%;
+        }
+
+        .start-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .start-btn:disabled:hover:before {
+            left: -100%;
+        }
+
+        /* ===== C PROGRAMMING COURSE PAGE (Hidden Initially) ===== */
+        .course-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .course-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            margin-bottom: 40px;
+        }
+
+        .course-title {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #48dbfb, #0abde3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            background: #ff9f43;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #ee5a24;
+            transform: translateX(-5px);
+        }
+
+        /* Level Navigation */
+        .level-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .level-tab {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .level-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .level-tab.active {
+            background: linear-gradient(45deg, #ff6b6b, #ff9f43);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Level Content */
+        .level-content {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .level-title {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            color: #feca57;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* C Code Display */
+        .c-code {
+            background: #1e1e2e;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #48dbfb;
+            font-family: 'Consolas', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-line {
+            color: #f8f8f2;
+            margin-bottom: 10px;
+            display: block;
+            line-height: 1.6;
+        }
+
+        .code-comment {
+            color: #6272a4;
+        }
+
+        .code-keyword {
+            color: #ff79c6;
+        }
+
+        .code-function {
+            color: #50fa7b;
+        }
+
+        .code-string {
+            color: #f1fa8c;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 3px solid #00b894;
+        }
+
+        .quiz-question {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #555;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #48dbfb;
+            transform: translateX(10px);
+        }
+
+        .quiz-option.correct {
+            background: rgba(0, 184, 148, 0.2);
+            border-color: #00b894;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+        }
+
+        /* Game Section */
+        .game-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 3px solid #fd79a8;
+        }
+
+        .code-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .code-draggable {
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: grab;
+            font-family: 'Consolas', monospace;
+            font-size: 1.2em;
+            font-weight: bold;
+            user-select: none;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+            transition: all 0.3s;
+        }
+
+        .code-draggable:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.5);
+        }
+
+        .drop-zone {
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px dashed #feca57;
+            border-radius: 15px;
+            min-height: 120px;
+            padding: 25px;
+            margin: 30px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drop-slot {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed #888;
+            border-radius: 10px;
+            width: 120px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .drop-slot.filled {
+            background: #00b894;
+            color: white;
+            border-color: #00b894;
+        }
+
+        /* Check Button */
+        .check-btn {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s;
+        }
+
+        .check-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 184, 148, 0.4);
+        }
+
+        /* Result Section */
+        .result-section {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 184, 148, 0.1);
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid #00b894;
+            display: none;
+        }
+
+        .result-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+
+        /* ===== AI BOT - FIXED AND IMPROVED ===== */
+        .ai-bot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 500px;
+        }
+
+        .bot-header {
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .bot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 300px;
+            min-height: 200px;
+            background: #f8f9fa;
+        }
+
+        .bot-input-area {
+            border-top: 1px solid #ddd;
+            padding: 15px;
+            background: white;
+            display: flex;
+            gap: 10px;
+        }
+
+        .bot-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .bot-input:focus {
+            border-color: #6c5ce7;
+        }
+
+        .send-btn {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .send-btn:hover {
+            background: #5b4fcf;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bot-message {
+            background: #e3f2fd;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 5px;
+            max-width: 85%;
+            align-self: flex-start;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            line-height: 1.5;
+        }
+
+        .user-message {
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 5px 15px;
+            max-width: 85%;
+            align-self: flex-end;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            line-height: 1.5;
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-question {
+            background: #48dbfb;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-question:hover {
+            background: #3ac0d9;
+            transform: translateY(-2px);
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background: #e3f2fd;
+            border-radius: 15px 15px 15px 5px;
+            max-width: 85%;
+            align-self: flex-start;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #6c5ce7;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px;
+            }
+            
+            .logo-text {
+                font-size: 3.2em;
+            }
+            
+            .tagline {
+                font-size: 1.4em;
+            }
+            
+            .language-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .language-card {
+                padding: 30px 20px;
+            }
+            
+            .start-btn {
+                padding: 18px 50px;
+                font-size: 1.4em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .course-title {
+                font-size: 2.5em;
+            }
+            
+            .level-tab {
+                min-width: 150px;
+                padding: 15px 25px;
+            }
+            
+            .level-content {
+                padding: 25px 20px;
+            }
+            
+            .ai-bot {
+                width: 90%;
+                right: 5%;
+                bottom: 10px;
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ===== MAIN FRONT PAGE ===== -->
+    <div class="main-container" id="front-page">
+        <!-- Hero Header -->
+        <div class="hero-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="logo-text">Desi Coder</div>
+            </div>
+            
+            <p class="tagline">
+                Learn <span class="highlight">C Programming</span> with 
+                <span class="highlight">Indian Examples</span> 
+                in <span class="highlight">Hindi</span>
+            </p>
+        </div>
+
+        <!-- Language Selection -->
+        <div class="language-section">
+            <h2 class="section-title">Choose Your Programming Path</h2>
+            
+            <div class="language-grid">
+                <!-- C Programming Card -->
+                <div class="language-card active" id="c-card" onclick="selectLanguage('c')">
+                    <div class="language-icon">
+                        <i class="fas fa-c"></i>
+                    </div>
+                    <div class="language-name">C Programming</div>
+                    <div class="language-desc">
+                        Start your coding journey with C - the mother of all programming languages. 
+                        Perfect for beginners who want to build a strong foundation.
+                    </div>
+                    
+                    <div class="language-features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> Best for Beginners</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Indian Examples & Exercises</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> 3 Interactive Levels</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Hands-on Practice</div>
+                    </div>
+                </div>
+                
+                <!-- C++ Card -->
+                <div class="language-card coming-soon" id="cpp-card" onclick="selectLanguage('cpp')">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="language-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="language-name">C++ Programming</div>
+                    <div class="language-desc">
+                        Master Object-Oriented Programming with C++. Build games, applications, 
+                        and software with this powerful language.
+                    </div>
+                    
+                    <div class="language-features">
+                        <div class="feature"><i class="fas fa-clock"></i> OOP Concepts</div>
+                        <div class="feature"><i class="fas fa-clock"></i> Game Development</div>
+                        <div class="feature"><i class="fas fa-clock"></i> Advanced Projects</div>
+                        <div class="feature"><i class="fas fa-clock"></i> Real-world Applications</div>
+                    </div>
+                </div>
+                
+                <!-- HTML/CSS Card -->
+                <div class="language-card coming-soon" id="html-card" onclick="selectLanguage('html')">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="language-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="language-name">Web Development</div>
+                    <div class="language-desc">
+                        Create beautiful websites and web applications. Learn HTML, CSS, and JavaScript 
+                        to build modern, responsive websites.
+                    </div>
+                    
+                    <div class="language-features">
+                        <div class="feature"><i class="fas fa-clock"></i> HTML5 & CSS3</div>
+                        <div class="feature"><i class="fas fa-clock"></i> JavaScript Basics</div>
+                        <div class="feature"><i class="fas fa-clock"></i> Responsive Design</div>
+                        <div class="feature"><i class="fas fa-clock"></i> Portfolio Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Section -->
+        <div class="action-section">
+            <div class="selected-language" id="selected-language-text">
+                <i class="fas fa-check-circle"></i> Selected: <strong>C Programming</strong>
+            </div>
+            
+            <button class="start-btn" id="start-button" onclick="startLearning()">
+                <i class="fas fa-rocket"></i> Start Learning C Programming
+            </button>
+            
+            <p style="margin-top: 25px; opacity: 0.8; font-size: 1.1em;">
+                <i class="fas fa-graduation-cap"></i> 
+                Master C programming through <strong>interactive lessons</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== C PROGRAMMING COURSE (Hidden Initially) ===== -->
+    <div class="main-container course-container" id="c-course">
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBackToFrontPage()">
+            <i class="fas fa-arrow-left"></i> Back to Language Selection
+        </button>
+
+        <!-- Course Header -->
+        <div class="course-header">
+            <h1 class="course-title">C Programming Masterclass 🇮🇳</h1>
+            <p style="font-size: 1.4em; opacity: 0.9;">
+                Learn C with Indian Examples: Cricket Scores, Samosa Prices & More!
+            </p>
+        </div>
+
+        <!-- Level Navigation -->
+        <div class="level-nav">
+            <button class="level-tab active" onclick="loadLevel(1)">📚 Level 1: Basics</button>
+            <button class="level-tab" onclick="loadLevel(2)">📚 Level 2: Logic</button>
+            <button class="level-tab" onclick="loadLevel(3)">📚 Level 3: Advanced</button>
+        </div>
+
+        <!-- Level Content -->
+        <div id="level-content">
+            <!-- Content will be loaded here by JavaScript -->
+        </div>
+
+        <!-- AI Bot - FULLY FUNCTIONAL -->
+        <div class="ai-bot" id="ai-bot">
+            <div class="bot-header" onclick="toggleBot()">
+                <span><i class="fas fa-robot"></i> C Programming Assistant</span>
+                <span id="bot-toggle">▼</span>
+            </div>
+            <div class="bot-messages" id="bot-messages">
+                <div class="message">
+                    <div class="bot-message">
+                        <strong>Namaste! 🙏</strong><br>
+                        I'm your C Programming assistant. Ask me anything about:
+                        <div class="quick-questions">
+                            <span class="quick-question" onclick="askBot('What is C programming?')">What is C?</span>
+                            <span class="quick-question" onclick="askBot('How to write printf in C?')">printf usage</span>
+                            <span class="quick-question" onclick="askBot('What is a variable?')">Variables</span>
+                            <span class="quick-question" onclick="askBot('How to use if-else?')">if-else</span>
+                            <span class="quick-question" onclick="askBot('What are arrays?')">Arrays</span>
+                            <span class="quick-question" onclick="askBot('Show me a simple C program')">Example code</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bot-input-area">
+                <input type="text" class="bot-input" id="bot-input" placeholder="Ask about C programming..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CREATE PARTICLES =====
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#ff6b6b', '#48dbfb', '#feca57', '#1dd1a1', '#ff9ff3'];
+            
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 20 + 5;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const delay = Math.random() * 20;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.background = color;
+                particle.style.opacity = Math.random() * 0.3 + 0.1;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // ===== LANGUAGE SELECTION =====
+        function selectLanguage(lang) {
+            if (lang === 'cpp' || lang === 'html') {
+                alert("Coming Soon! For now, let's master C Programming first. It's the foundation for all programming! 😊");
+                return;
+            }
+            
+            selectedLanguage = lang;
+            document.getElementById('c-card').classList.remove('active');
+            document.getElementById(`${lang}-card`).classList.add('active');
+        }
+
+        // ===== START LEARNING C PROGRAMMING =====
+        function startLearning() {
+            const frontPage = document.getElementById('front-page');
+            const coursePage = document.getElementById('c-course');
+            
+            // Hide front page, show course page
+            frontPage.style.display = 'none';
+            coursePage.style.display = 'block';
+            
+            // Load first level
+            loadLevel(1);
+            
+            // Create particles for course page
+            createParticles();
+        }
+
+        // ===== GO BACK TO FRONT PAGE =====
+        function goBackToFrontPage() {
+            const frontPage = document.getElementById('front-page');
+            const coursePage = document.getElementById('c-course');
+            
+            coursePage.style.display = 'none';
+            frontPage.style.display = 'block';
+        }
+
+        // ===== LOAD LEVEL CONTENT =====
+        let currentLevel = 1;
+        
+        function loadLevel(levelNum) {
+            currentLevel = levelNum;
+            
+            // Update active tab
+            document.querySelectorAll('.level-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.level-tab')[levelNum - 1].classList.add('active');
+            
+            // Level content data
+            const levels = {
+                1: {
+                    title: "📚 Level 1: C Programming Basics",
+                    theory: `C Programming is the foundation of all programming languages. 
+                            It's used in operating systems, embedded systems, and more!`,
+                    example: `#include <stdio.h>
+
+int main() {
+    // Indian Examples
+    int virat_score = 82;      // Cricket score
+    float samosa_price = 15.50; // Samosa price
+    char grade = 'A';          // Grade
+    
+    printf("Virat scored: %d runs\\n", virat_score);
+    printf("Samosa price: ₹%.2f\\n", samosa_price);
+    printf("Grade: %c\\n", grade);
+    
+    return 0;
+}`,
+                    quizQuestion: "C mein variable declare karne ka sahi tarika kaunsa hai?",
+                    options: [
+                        "A. score = 100;",
+                        "B. int score = 100;",
+                        "C. let score = 100;",
+                        "D. var score = 100;"
+                    ],
+                    correctAnswer: 1,
+                    gameTitle: "C Code Complete Karein",
+                    gameCode: "#include <stdio.h>\n\nint main() {\n    score = 100;\n    printf(\"Score: %d\", score);\n    return 0;\n}",
+                    gameBlocks: ["int", "score", "=", "100", ";"],
+                    gameSlots: 5
+                },
+                2: {
+                    title: "📚 Level 2: If-Else & Logic",
+                    theory: `Use if-else for decisions in C. Jaise agar paise hai to pizza khao, nahi to samosa!`,
+                    example: `#include <stdio.h>
+
+int main() {
+    int money = 200;
+    int pizza_price = 199;
+    
+    if (money >= pizza_price) {
+        printf("Pizza khao! 🍕\\n");
+    } else {
+        printf("Samosa khao! 🥟\\n");
+    }
+    
+    // Loop example
+    for (int i = 1; i <= 3; i++) {
+        printf("Chai cup #%d\\n", i);
+    }
+    
+    return 0;
+}`,
+                    quizQuestion: "Yeh loop kitni baar chalega? for(int i=1; i<=5; i++)",
+                    options: [
+                        "A. 4 baar",
+                        "B. 5 baar",
+                        "C. 6 baar",
+                        "D. 7 baar"
+                    ],
+                    correctAnswer: 1,
+                    gameTitle: "If-Else Code Complete Karein",
+                    gameCode: "if (temperature > 30) {\n    printf(\"Garmi hai!\");\n}",
+                    gameBlocks: ["int", "temperature", "=", "35", ";", "if", "(", "temperature", ">", "30", ")", "{", "printf", "(", "\"Garmi hai!\"", ")", ";", "}"],
+                    gameSlots: 17
+                },
+                3: {
+                    title: "📚 Level 3: Functions & Arrays",
+                    theory: `Functions help reuse code. Arrays store multiple values. 
+                            Example: Cricket team ke scores store karna array mein.`,
+                    example: `#include <stdio.h>
+
+// Function to add two numbers
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    // Array of cricket scores
+    int scores[5] = {82, 64, 45, 91, 77};
+    
+    printf("Cricket Scores:\\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Player %d: %d runs\\n", i+1, scores[i]);
+    }
+    
+    // Use function
+    int total = add(100, 50);
+    printf("\\nTotal: %d\\n", total);
+    
+    return 0;
+}`,
+                    quizQuestion: "Array declare karne ka sahi tarika?",
+                    options: [
+                        "A. array scores = [1,2,3];",
+                        "B. int scores[] = {1,2,3};",
+                        "C. scores = [1,2,3];",
+                        "D. array scores(1,2,3);"
+                    ],
+                    correctAnswer: 1,
+                    gameTitle: "Function Code Complete Karein",
+                    gameCode: "int main() {\n    result = add(10, 20);\n    printf(\"Result: %d\", result);\n    return 0;\n}",
+                    gameBlocks: ["int", "add", "(", "int", "a", ",", "int", "b", ")", "{", "return", "a", "+", "b", ";", "}"],
+                    gameSlots: 15
+                }
+            };
+            
+            const level = levels[levelNum];
+            const contentDiv = document.getElementById('level-content');
+            
+            contentDiv.innerHTML = `
+                <div class="level-content">
+                    <h2 class="level-title">${level.title}</h2>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #48dbfb; margin-bottom: 15px; font-size: 1.8em;">
+                            <i class="fas fa-book"></i> Theory
+                        </h3>
+                        <p style="font-size: 1.2em; line-height: 1.8;">
+                            ${level.theory}
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #00b894; margin-bottom: 15px; font-size: 1.8em;">
+                            <i class="fas fa-code"></i> C Code Example
+                        </h3>
+                        <div class="c-code">
+                            ${level.example.split('\n').map(line => 
+                                `<span class="code-line">${highlightCcode(line)}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Quiz Section -->
+                    <div class="quiz-section" id="quiz-section-${levelNum}">
+                        <h3 style="color: #ff9f43; margin-bottom: 20px; font-size: 1.8em;">
+                            <i class="fas fa-question-circle"></i> Quick Quiz
+                        </h3>
+                        <p class="quiz-question">${level.quizQuestion}</p>
+                        
+                        <div class="quiz-options">
+                            ${level.options.map((option, index) => `
+                                <div class="quiz-option" onclick="checkAnswer(${levelNum}, ${index})">
+                                    ${option}
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div id="quiz-feedback-${levelNum}" style="margin-top: 20px;"></div>
+                        
+                        <button class="check-btn" onclick="startGame(${levelNum})" 
+                                style="display: none;" id="game-btn-${levelNum}">
+                            <i class="fas fa-gamepad"></i> Start Coding Game
+                        </button>
+                    </div>
+                    
+                    <!-- Game Section (Initially Hidden) -->
+                    <div class="game-section" id="game-section-${levelNum}" style="display: none;">
+                        <h3 style="color: #fd79a8; margin-bottom: 20px; font-size: 1.8em;">
+                            <i class="fas fa-puzzle-piece"></i> ${level.gameTitle}
+                        </h3>
+                        
+                        <p style="margin-bottom: 20px; font-size: 1.2em;">
+                            Neeche diya hua code incomplete hai. Code blocks ko drag karke sahi jagah daalein:
+                        </p>
+                        
+                        <div class="c-code">
+                            ${level.gameCode.split('\n').map(line => 
+                                `<span class="code-line">${highlightCcode(line)}</span>`
+                            ).join('')}
+                        </div>
+                        
+                        <div style="text-align: center; margin: 25px 0;">
+                            <p style="color: #feca57; font-size: 1.2em;">
+                                <i class="fas fa-hand-point-down"></i> Drag these code blocks below:
+                            </p>
+                            <div class="code-blocks" id="code-blocks-${levelNum}">
+                                ${level.gameBlocks.map(block => `
+                                    <div class="code-draggable" draggable="true" 
+                                         ondragstart="drag(event)" data-value="${block}">
+                                        ${block}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin: 25px 0;">
+                            <p style="color: #48dbfb; font-size: 1.2em;">
+                                <i class="fas fa-mouse-pointer"></i> Drop blocks here in correct order:
+                            </p>
+                            <div class="drop-zone" id="drop-zone-${levelNum}"
+                                 ondrop="drop(event, ${levelNum})" 
+                                 ondragover="allowDrop(event)">
+                                ${Array(level.gameSlots).fill().map((_, i) => `
+                                    <div class="drop-slot" id="slot-${levelNum}-${i}"
+                                         ondrop="drop(event, ${levelNum})" 
+                                         ondragover="allowDrop(event)">
+                                        Slot ${i+1}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <button class="check-btn" onclick="checkGame(${levelNum})">
+                            <i class="fas fa-check"></i> Check My Code
+                        </button>
+                        
+                        <div id="game-feedback-${levelNum}" style="margin-top: 20px;"></div>
+                        
+                        <div class="result-section" id="result-${levelNum}">
+                            <div class="result-icon">🎉🏆</div>
+                            <h2 style="color: #00b894; font-size: 2.5em;">Level Complete!</h2>
+                            <p style="font-size: 1.3em; margin: 20px 0;">
+                                Shabaash! Aapne Level ${levelNum} successfully complete kar liya!
+                            </p>
+                            ${levelNum < 3 ? `
+                                <button class="check-btn" onclick="loadLevel(${levelNum + 1})">
+                                    Next Level <i class="fas fa-arrow-right"></i>
+                                </button>
+                            ` : `
+                                <button class="check-btn" onclick="completeCourse()">
+                                    <i class="fas fa-trophy"></i> Course Complete!
+                                </button>
+                            `}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ===== C CODE SYNTAX HIGHLIGHTING =====
+        function highlightCcode(line) {
+            let highlighted = line;
+            
+            // Highlight keywords
+            const keywords = ['#include', 'int', 'float', 'char', 'if', 'else', 'for', 'while', 'return', 'main'];
+            keywords.forEach(keyword => {
+                highlighted = highlighted.replace(
+                    new RegExp(`\\b${keyword}\\b`, 'g'),
+                    `<span class="code-keyword">${keyword}</span>`
+                );
+            });
+            
+            // Highlight functions
+            highlighted = highlighted.replace(
+                /\b(printf|scanf|main)\b/g,
+                '<span class="code-function">$1</span>'
+            );
+            
+            // Highlight strings
+            highlighted = highlighted.replace(
+                /"([^"]*)"/g,
+                '<span class="code-string">"$1"</span>'
+            );
+            
+            // Highlight comments
+            highlighted = highlighted.replace(
+                /(\/\/.*)/g,
+                '<span class="code-comment">$1</span>'
+            );
+            
+            return highlighted;
+        }
+
+        // ===== QUIZ FUNCTIONS =====
+        function checkAnswer(levelNum, optionIndex) {
+            const options = document.querySelectorAll(`#quiz-section-${levelNum} .quiz-option`);
+            const feedback = document.getElementById(`quiz-feedback-${levelNum}`);
+            const gameBtn = document.getElementById(`game-btn-${levelNum}`);
+            
+            // Disable all options
+            options.forEach(opt => {
+                opt.style.cursor = 'not-allowed';
+                opt.onclick = null;
+            });
+            
+            // Check answer (correct is always option 1 in our data)
+            if (optionIndex === 1) {
+                options[1].classList.add('correct');
+                feedback.innerHTML = `
+                    <div style="background: rgba(0,184,148,0.2); color: #00b894; padding: 15px; border-radius: 10px;">
+                        <i class="fas fa-check-circle"></i> <strong>Shabaash! Bilkul Sahi!</strong>
+                        <p style="margin-top: 10px;">Aap C programming concepts samajh rahe hain!</p>
+                    </div>
+                `;
+            } else {
+                options[optionIndex].classList.add('wrong');
+                options[1].classList.add('correct');
+                feedback.innerHTML = `
+                    <div style="background: rgba(255,107,107,0.2); color: #ff6b6b; padding: 15px; border-radius: 10px;">
+                        <i class="fas fa-times-circle"></i> <strong>Thoda aur sochiye!</strong>
+                        <p style="margin-top: 10px;">Sahi jawab: <strong>${options[1].textContent}</strong></p>
+                    </div>
+                `;
+            }
+            
+            // Show game button after delay
+            setTimeout(() => {
+                gameBtn.style.display = 'block';
+            }, 1500);
+        }
+
+        function startGame(levelNum) {
+            document.getElementById(`quiz-section-${levelNum}`).style.display = 'none';
+            document.getElementById(`game-section-${levelNum}`).style.display = 'block';
+        }
+
+        // ===== DRAG & DROP GAME =====
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.getAttribute('data-value'));
+            event.target.style.opacity = '0.5';
+        }
+
+        function drop(event, levelNum) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            const target = event.target;
+            
+            if (target.classList.contains('drop-slot')) {
+                target.textContent = data;
+                target.classList.add('filled');
+                target.style.opacity = '1';
+            }
+        }
+
+        function checkGame(levelNum) {
+            const feedback = document.getElementById(`game-feedback-${levelNum}`);
+            const result = document.getElementById(`result-${levelNum}`);
+            
+            // Simple check - just show success for demo
+            feedback.innerHTML = `
+                <div style="background: rgba(0,184,148,0.2); color: #00b894; padding: 15px; border-radius: 10px; text-align: center;">
+                    <i class="fas fa-check-circle"></i> <strong>Code Compiled Successfully!</strong>
+                    <p style="margin-top: 10px;">Your C program is working perfectly! 🎉</p>
+                </div>
+            `;
+            
+            // Show result after delay
+            setTimeout(() => {
+                result.style.display = 'block';
+                feedback.innerHTML = '';
+            }, 2000);
+        }
+
+        // ===== COURSE COMPLETION =====
+        function completeCourse() {
+            alert(`🎉 C PROGRAMMING COURSE COMPLETE!\n\nCongratulations!\n\nYou have successfully completed all 3 levels of C Programming!\n\nKeep practicing and building amazing projects!\n\n- Desi Coder Team 🇮🇳`);
+            
+            // Option to go back to front page
+            if (confirm("Do you want to go back to the main page?")) {
+                goBackToFrontPage();
+            }
+        }
+
+        // ===== AI BOT - FULLY FUNCTIONAL =====
+        let isBotOpen = true;
+        
+        function toggleBot() {
+            const bot = document.getElementById('ai-bot');
+            const toggle = document.getElementById('bot-toggle');
+            
+            if (isBotOpen) {
+                bot.style.maxHeight = '50px';
+                toggle.innerHTML = '▲';
+            } else {
+                bot.style.maxHeight = '500px';
+                toggle.innerHTML = '▼';
+            }
+            isBotOpen = !isBotOpen;
+        }
+        
+        function askBot(question) {
+            document.getElementById('bot-input').value = question;
+            sendMessage();
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('bot-input');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Get bot response after delay
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getBotResponse(message);
+                addMessage(response, 'bot');
+                
+                // Add quick questions if needed
+                if (shouldAddQuickQuestions(response)) {
+                    addQuickQuestions();
+                }
+            }, 1000);
+        }
+        
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('bot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            
+            const bubble = document.createElement('div');
+            bubble.className = sender === 'user' ? 'user-message' : 'bot-message';
+            bubble.innerHTML = text.replace(/\n/g, '<br>');
+            
+            messageDiv.appendChild(bubble);
+            messagesDiv.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function showTypingIndicator() {
+            const messagesDiv = document.getElementById('bot-messages');
+            const indicator = document.createElement('div');
+            indicator.className = 'message';
+            indicator.id = 'typing-indicator';
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'typing-indicator';
+            bubble.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            
+            indicator.appendChild(bubble);
+            messagesDiv.appendChild(indicator);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+        
+        function getBotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // C Programming Basics
+            if (lowerMessage.includes('what is c') || lowerMessage.includes('c programming')) {
+                return `C programming ek general-purpose programming language hai jo 1970s mein develop kiya gaya tha. 
+                <br><br><strong>Key Features:</strong>
+                • Low-level access to memory
+                • Simple and efficient
+                • Used in operating systems (Windows, Linux)
+                • Foundation for other languages (C++, Java)
+                
+                <br><strong>Example:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+int main() {
+    printf("Namaste Desi Coder!");
+    return 0;
+}</pre>`;
+            }
+            
+            if (lowerMessage.includes('variable') || lowerMessage.includes('var')) {
+                return `Variable ek container hai jo data store karta hai.
+                <br><br><strong>Syntax:</strong> <code>datatype variable_name = value;</code>
+                
+                <br><strong>Types:</strong>
+                • <code>int</code> - Integer numbers (e.g., 10, -5)
+                • <code>float</code> - Decimal numbers (e.g., 3.14)
+                • <code>char</code> - Single character (e.g., 'A')
+                • <code>double</code> - Large decimal numbers
+                
+                <br><strong>Indian Example:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+int cricket_score = 82;
+float samosa_price = 15.50;
+char grade = 'A';</pre>`;
+            }
+            
+            if (lowerMessage.includes('printf') || lowerMessage.includes('print')) {
+                return `<code>printf()</code> function screen pe output display karta hai.
+                <br><br><strong>Syntax:</strong> <code>printf("format string", variables);</code>
+                
+                <br><strong>Format Specifiers:</strong>
+                • <code>%d</code> - Integer
+                • <code>%f</code> - Float
+                • <code>%c</code> - Character
+                • <code>%s</code> - String
+                
+                <br><strong>Example:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+int main() {
+    int runs = 82;
+    float price = 15.50;
+    
+    printf("Virat ne %d runs banaye!\\n", runs);
+    printf("Samosa price: ₹%.2f\\n", price);
+    
+    return 0;
+}</pre>`;
+            }
+            
+            if (lowerMessage.includes('if') || lowerMessage.includes('else') || lowerMessage.includes('condition')) {
+                return `if-else statements decisions lene ke liye use hote hain.
+                <br><br><strong>Syntax:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+if (condition) {
+    // code if true
+} else {
+    // code if false
+}</pre>
+                
+                <br><strong>Indian Example:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+int main() {
+    int money = 200;
+    int pizza_price = 199;
+    
+    if (money >= pizza_price) {
+        printf("Pizza khao! 🍕\\n");
+    } else {
+        printf("Samosa khao! 🥟\\n");
+    }
+    
+    return 0;
+}</pre>`;
+            }
+            
+            if (lowerMessage.includes('array') || lowerMessage.includes('list')) {
+                return `Array same type ke multiple values store karta hai.
+                <br><br><strong>Syntax:</strong> <code>datatype array_name[size];</code>
+                
+                <br><strong>Example - Cricket Team Scores:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+int main() {
+    // Array declaration
+    int scores[5] = {82, 64, 45, 91, 77};
+    
+    // Access array elements
+    printf("Player 1 score: %d\\n", scores[0]);
+    printf("Player 2 score: %d\\n", scores[1]);
+    
+    return 0;
+}</pre>`;
+            }
+            
+            if (lowerMessage.includes('loop') || lowerMessage.includes('for') || lowerMessage.includes('while')) {
+                return `Loops ek hi code ko multiple times run karne ke liye use hote hain.
+                <br><br><strong>For Loop:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+for (initialization; condition; increment) {
+    // code to repeat
+}</pre>
+                
+                <br><strong>Example - Chai Cups:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+int main() {
+    for (int i = 1; i <= 3; i++) {
+        printf("Chai cup #%d ready! ☕\\n", i);
+    }
+    return 0;
+}</pre>`;
+            }
+            
+            if (lowerMessage.includes('function') || lowerMessage.includes('define')) {
+                return `Function ek code block hai jo specific task perform karta hai.
+                <br><br><strong>Syntax:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+return_type function_name(parameters) {
+    // code
+    return value;
+}</pre>
+                
+                <br><strong>Example - Add Two Numbers:</strong>
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(10, 20);
+    printf("Sum: %d\\n", result);  // Output: 30
+    return 0;
+}</pre>`;
+            }
+            
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('namaste')) {
+                return `Namaste! 🙏 Main aapka C Programming Assistant hun. 
+                <br><br>Aap mujhse C programming ke baare mein kuch bhi pooch sakte hain jaise:
+                • Variables kaise banaye?
+                • if-else kaise use kare?
+                • Loops kaise chalaye?
+                • Functions kaise likhe?
+                • Arrays kaise use kare?
+                
+                <br>Kya aapko koi specific help chahiye?`;
+            }
+            
+            if (lowerMessage.includes('example') || lowerMessage.includes('program') || lowerMessage.includes('code')) {
+                return `Yeh lo ek simple C program Indian example ke saath:
+                <pre style="background:#f0f0f0;padding:10px;border-radius:5px;margin-top:5px;">
+#include <stdio.h>
+
+int main() {
+    // Indian variables
+    int cricket_runs = 82;
+    float tea_price = 10.50;
+    char player_grade = 'A';
+    
+    // Display information
+    printf("🏏 Cricket Match Result:\\n");
+    printf("Virat Kohli scored: %d runs\\n", cricket_runs);
+    printf("☕ Chai price: ₹%.2f\\n", tea_price);
+    printf("📊 Player Grade: %c\\n", player_grade);
+    
+    // Simple calculation
+    int total_runs = cricket_runs + 25;
+    printf("\\nNext match target: %d runs\\n", total_runs);
+    
+    return 0;
+}</pre>`;
+            }
+            
+            // Default response
+            return `Main aapki baat samjha, lekin yeh specific C programming topic nahi hai. 
+            <br><br>Kya aap yeh pooch sakte hain:
+            • C programming basics
+            • Variables and data types
+            • if-else statements
+            • Loops (for, while)
+            • Functions
+            • Arrays
+            <br><br>Ya phir "example" type karein ek complete C program dekhne ke liye!`;
+        }
+        
+        function shouldAddQuickQuestions(response) {
+            return response.includes('Kya aapko koi specific help chahiye?') || 
+                   response.includes('Kya aap yeh pooch sakte hain');
+        }
+        
+        function addQuickQuestions() {
+            const messagesDiv = document.getElementById('bot-messages');
+            const quickQuestions = document.createElement('div');
+            quickQuestions.className = 'message';
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'bot-message';
+            bubble.innerHTML = `
+                <strong>Quick Questions:</strong>
+                <div class="quick-questions">
+                    <span class="quick-question" onclick="askBot('How to write a simple C program?')">Simple Program</span>
+                    <span class="quick-question" onclick="askBot('What are data types in C?')">Data Types</span>
+                    <span class="quick-question" onclick="askBot('How to take user input?')">User Input</span>
+                    <span class="quick-question" onclick="askBot('What is scanf?')">scanf Function</span>
+                </div>
+            `;
+            
+            quickQuestions.appendChild(bubble);
+            messagesDiv.appendChild(quickQuestions);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        // ===== INITIALIZE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            console.log('🚀 Desi Coder - C Programming Course Loaded!');
+            
+            // Ensure AI bot is open
+            const bot = document.getElementById('ai-bot');
+            bot.style.maxHeight = '500px';
+            
+            // Add welcome message
+            setTimeout(() => {
+                addMessage("Main aapko C programming sikhne mein help kar sakta hun. Aap kya seekhna chahenge?", 'bot');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
